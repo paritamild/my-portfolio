@@ -99,7 +99,11 @@ a {
 }
 
 .house__idle svg,
-.house__idle img,
+.house__idle img,{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 .house__hover svg,
 .house__hover img {
   display: block;
