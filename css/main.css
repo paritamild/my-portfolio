@@ -1,0 +1,222 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", "Noto Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  background: #fff;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============ ฉากหลัก: เต็มจอพอดี ไม่ต้องเลื่อน ============ */
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;        /* fallback */
+  height: 100svh;       /* ไม่โดนแถบเบราว์เซอร์มือถือบัง */
+  min-height: 520px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* ภูเขา: ติดกับพื้นหญ้า ปรับความสูงตามจอ */
+.mountains {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  width: 100%;
+  height: clamp(190px, 46%, 560px);
+  object-fit: cover;
+  object-position: center bottom;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ทุ่งหญ้า: ยืดเต็มความกว้างเสมอ */
+.grass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 42%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ============ บ้าน: จัดกึ่งกลาง ไม่ใช้พิกัดตายตัว ============ */
+.houses {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 17%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(28px, 14vw, 300px);
+  padding: 0 4vw;
+}
+
+.house {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: clamp(110px, 18vw, 340px);
+  outline-offset: 6px;
+}
+
+/* ซ้อนรูป idle กับ hover ไว้ตำแหน่งเดียวกัน */
+.house__art {
+  position: relative;
+  display: block;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+.house__idle,
+.house__hover {
+  display: block;
+  width: 100%;
+  transition: opacity 0.35s ease;
+}
+
+.house__idle svg,
+.house__idle img,
+.house__hover svg,
+.house__hover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.house__hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.house:hover .house__hover,
+.house:focus-visible .house__hover {
+  opacity: 1;
+}
+
+.house:hover .house__idle,
+.house:focus-visible .house__idle {
+  opacity: 0;
+}
+
+.house:hover .house__art,
+.house:focus-visible .house__art {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.house__label {
+  font-size: clamp(11px, 1.05vw, 16px);
+  line-height: 1.3;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+}
+
+/* ============ Notes ============ */
+.notes {
+  position: absolute;
+  right: 6vw;
+  bottom: 24%;
+  font-size: clamp(11px, 1.05vw, 16px);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+  padding: 6px 4px;
+  transition: transform 0.25s ease;
+}
+
+.notes:hover,
+.notes:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* ============ แถบไอคอนด้านล่าง: ติดขอบล่าง อยู่กลางเสมอ ============ */
+.dock {
+  position: absolute;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 18px);
+  padding: 11px clamp(14px, 2.4vw, 45px);
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  max-width: calc(100% - 24px);
+}
+
+.dock__item {
+  display: grid;
+  place-items: center;
+  width: clamp(32px, 2.6vw, 44px);
+  height: clamp(32px, 2.6vw, 44px);
+  border-radius: 10px;
+  font-size: clamp(13px, 1.1vw, 18px);
+  font-weight: 500;
+  line-height: 1;
+  background: #1c1c1e;
+  transition: transform 0.2s ease;
+}
+
+.dock__item:hover,
+.dock__item:focus-visible {
+  transform: translateY(-5px) scale(1.12);
+}
+
+.dock__item--ae { color: #9999ff; border: 1.5px solid #9999ff; background: #00005b; }
+.dock__item--pr { color: #ea77ff; border: 1.5px solid #ea77ff; background: #00005b; }
+.dock__item--ai { color: #ff9a00; border: 1.5px solid #ff9a00; background: #330000; }
+.dock__item--ph { background: #f4f1e6; }
+.dock__item--no { background: #ffd84a; }
+.dock__item--ig { background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af); }
+.dock__item--ml { background: linear-gradient(180deg, #3aa0ff, #1a63e6); }
+
+/* ============ จอเตี้ย (เช่น มือถือแนวนอน) ============ */
+@media (max-height: 560px) {
+  .houses { bottom: 24%; }
+  .house { width: clamp(90px, 13vw, 200px); }
+  .notes { display: none; }
+}
+
+/* ============ มือถือแนวตั้ง ============ */
+@media (max-width: 600px) {
+  .scene { min-height: 560px; }
+  .mountains { bottom: 34%; height: clamp(150px, 30%, 300px); }
+  .grass { height: 46%; }
+  .houses { bottom: 20%; gap: 6vw; padding: 0 5vw; }
+  .house { width: 38vw; }
+  .notes { right: 5vw; bottom: 16%; }
+}
+
+/* ============ ผู้ใช้ที่ปิดแอนิเมชันในระบบ ============ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

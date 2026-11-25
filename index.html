@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home</title>
+  <meta name="description" content="Home">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+  <link href="./css/main.css" rel="stylesheet">
+</head>
+<body>
+
+  <main class="scene">
+
+    <!-- พื้นหลัง: ภูเขา + ทุ่งหญ้า -->
+    <img class="mountains" src="images/mountains.webp" alt="" aria-hidden="true">
+    <img class="grass" src="images/grass.webp" alt="" aria-hidden="true">
+
+    <!-- บ้านสองหลัง -->
+    <nav class="houses" aria-label="Main">
+
+      <!--
+        วิธีเปลี่ยนเป็นรูปบ้านของจริง:
+        ลบ <svg> ในแต่ละ .house__idle / .house__hover แล้วใส่ <img src="images/ชื่อไฟล์.png" alt="">
+        รูป idle = ตอนปกติ, รูป hover = ตอนเมาส์ชี้ (สลับให้อัตโนมัติ)
+        ลิงก์ href="#" เปลี่ยนเป็นหน้าปลายทางได้เลย
+      -->
+
+      <a class="house house--front" href="#front">
+        <span class="house__art">
+          <span class="house__idle">
+            <svg viewBox="0 0 180 112" role="img" aria-label="Front of House">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#8a3df0"/>
+                  <stop offset="1" stop-color="#5a1fb0"/>
+                </linearGradient>
+              </defs>
+              <polygon points="0,22 62,0 100,12 180,26 156,112 22,112 30,52" fill="url(#g1)"/>
+              <rect x="44" y="52" width="38" height="52" fill="#e9e4d6"/>
+              <circle cx="76" cy="80" r="2.5" fill="#9a958a"/>
+              <rect x="104" y="58" width="9" height="30" fill="#2c0f57"/>
+              <rect x="119" y="58" width="9" height="30" fill="#2c0f57"/>
+              <rect x="134" y="58" width="9" height="30" fill="#2c0f57"/>
+            </svg>
+          </span>
+          <span class="house__hover" aria-hidden="true">
+            <svg viewBox="0 0 180 112">
+              <polygon points="0,22 62,0 100,12 180,26 156,112 22,112 30,52" fill="url(#g1)"/>
+              <rect x="44" y="52" width="38" height="52" fill="#2c0f57"/>
+              <polygon points="44,52 62,56 62,102 44,104" fill="#e9e4d6"/>
+              <rect x="104" y="58" width="9" height="30" fill="#ffd66b"/>
+              <rect x="119" y="58" width="9" height="30" fill="#ffd66b"/>
+              <rect x="134" y="58" width="9" height="30" fill="#ffd66b"/>
+            </svg>
+          </span>
+        </span>
+        <span class="house__label">Front of House</span>
+      </a>
+
+      <a class="house house--back" href="#back">
+        <span class="house__art">
+          <span class="house__idle">
+            <svg viewBox="0 0 180 112" role="img" aria-label="Back of House">
+              <polygon points="0,22 62,0 100,12 180,26 156,112 22,112 30,52" fill="url(#g1)"/>
+              <rect x="64" y="46" width="44" height="40" fill="#2c0f57"/>
+            </svg>
+          </span>
+          <span class="house__hover" aria-hidden="true">
+            <svg viewBox="0 0 180 112">
+              <polygon points="0,22 62,0 100,12 180,26 156,112 22,112 30,52" fill="url(#g1)"/>
+              <rect x="64" y="46" width="44" height="40" fill="#ffd66b"/>
+            </svg>
+          </span>
+        </span>
+        <span class="house__label">Back of House</span>
+      </a>
+
+    </nav>
+
+    <a class="notes" href="#notes">Notes</a>
+
+    <!-- แถบไอคอนด้านล่าง: เปลี่ยน title และ href ได้, หรือแทนที่ตัวอักษรด้วย <img> ไอคอนของคุณ -->
+    <nav class="dock" aria-label="Links">
+      <a class="dock__item dock__item--ae" href="#" title="After Effects">Ae</a>
+      <a class="dock__item dock__item--pr" href="#" title="Premiere Pro">Pr</a>
+      <a class="dock__item dock__item--ai" href="#" title="Illustrator">Ai</a>
+      <a class="dock__item dock__item--ph" href="#" title="Photos">📷</a>
+      <a class="dock__item dock__item--no" href="#" title="Notes">📝</a>
+      <a class="dock__item dock__item--ig" href="#" title="Instagram">◎</a>
+      <a class="dock__item dock__item--ml" href="#" title="Mail">✉</a>
+    </nav>
+
+  </main>
+
+</body>
+</html>
